@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Schritte App</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#002b6f" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-inner">
+        <h1 id="current-step-title">Schritt eins</h1>
+        <p class="hero-subtitle">Arbeite dich Schritt für Schritt durch die Infos.</p>
+      </div>
+    </header>
+
+    <!-- Dezente Schritt-Navigation oben -->
+    <nav class="step-navigation" aria-label="Schritt Navigation">
+      <button class="step-nav-button active" data-target="step-1">1</button>
+      <button class="step-nav-button" data-target="step-2">2</button>
+      <button class="step-nav-button" data-target="step-3">3</button>
+    </nav>
+
+    <main>
+      <!-- Schritt 1 -->
+      <section id="step-1" class="step step-active" data-step="1" aria-label="Schritt eins">
+        <div class="step-inner">
+          <div class="info-list">
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Einführung</span>
+                <span class="info-content">
+                  Hier steht die ausführliche Erklärung zu Schritt eins – Einführung, Rahmen
+                  und Ziel dieses Schritts. Passe diesen Text an deinen Inhalt an.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Details prüfen</span>
+                <span class="info-content">
+                  Gehe die wichtigsten Punkte durch, markiere, was erledigt ist, und fülle fehlende
+                  Infos aus.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Bestätigung</span>
+                <span class="info-content">
+                  Bestätige, dass du alle Informationen verstanden hast und bereit bist,
+                  zum nächsten Schritt zu wechseln.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+          </div>
+
+          <button class="next-step-btn" data-next-step="step-2" type="button">
+            Nächster Schritt
+          </button>
+        </div>
+      </section>
+
+      <!-- Schritt 2 -->
+      <section id="step-2" class="step" data-step="2" aria-label="Schritt zwei">
+        <div class="step-inner">
+          <div class="info-list">
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Vertiefung</span>
+                <span class="info-content">
+                  Hier kannst du tiefer in die Inhalte einsteigen. Ergänze Beispiele, Notizen
+                  oder zusätzliche Hinweise.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Aufgaben</span>
+                <span class="info-content">
+                  Liste hier die Aufgaben dieses Schritts. Jede erledigte Aufgabe kannst du
+                  über das Häkchen bestätigen.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Rückblick</span>
+                <span class="info-content">
+                  Kurze Reflexion: Was hast du aus diesem Schritt mitgenommen, was bleibt offen?
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+          </div>
+
+          <button class="next-step-btn" data-next-step="step-3" type="button">
+            Nächster Schritt
+          </button>
+        </div>
+      </section>
+
+      <!-- Schritt 3 -->
+      <section id="step-3" class="step" data-step="3" aria-label="Schritt drei">
+        <div class="step-inner">
+          <div class="info-list">
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Abschluss</span>
+                <span class="info-content">
+                  Hier fasst du alles zusammen und stellst sicher, dass keine offenen Punkte mehr bestehen.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Dokumentation</span>
+                <span class="info-content">
+                  Trage hier ein, was dokumentiert werden muss (Notizen, Dateien, Links, usw.).
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+            <div class="info-item">
+              <button class="info-button" type="button">
+                <span class="info-title">Freigabe</span>
+                <span class="info-content">
+                  Letzter Check, bevor du den Prozess als abgeschlossen markierst.
+                </span>
+              </button>
+              <label class="confirm-checkbox">
+                <input type="checkbox" />
+                <span class="checkbox-visual"></span>
+              </label>
+            </div>
+
+          </div>
+
+          <button class="next-step-btn" data-next-step="done" type="button">
+            Alle Schritte abgeschlossen
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Service Worker Registration (PWA)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .catch((err) => console.error("SW registration failed:", err));
+      });
+    }
+  </script>
+</body>
+</html>
