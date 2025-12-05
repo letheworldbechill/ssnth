@@ -1,0 +1,328 @@
+:root {
+  --bg: #dcdcdc;           /* grauer Hintergrund */
+  --surface: #f2f2f2;      /* leicht hellere Fläche in der Mitte */
+  --text: #ffffff;         /* Buttons / Textflächen weiß */
+  --text-dark: #000000;    /* Text in Buttons schwarz */
+  --hero: #002b6f;         /* dunkelblau */
+  --black: #000000;        /* schwarz für Nächster-Schritt-Button */
+  --radius-pill: 9999px;
+  --radius-pressed: 12px;
+  --spacing-1: 4px;        /* 4px Grid-Basis */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.18);
+  --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero */
+
+.hero {
+  padding: calc(var(--spacing-1) * 6) calc(var(--spacing-1) * 4)
+    calc(var(--spacing-1) * 3);
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin: 0 0 calc(var(--spacing-1) * 2);
+  color: var(--hero);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.95rem;
+}
+
+/* Schritt-Navigation */
+
+.step-navigation {
+  display: flex;
+  justify-content: center;
+  gap: calc(var(--spacing-1) * 2);
+  padding-bottom: calc(var(--spacing-1) * 4);
+}
+
+.step-nav-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  color: #222;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.step-nav-button.active {
+  background-color: var(--hero);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 43, 111, 0.35);
+}
+
+.step-nav-button:active {
+  transform: scale(0.94);
+}
+
+/* Hauptbereich */
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 calc(var(--spacing-1) * 3) calc(var(--spacing-1) * 6);
+}
+
+.step {
+  display: none;
+  width: 100%;
+  max-width: 500px; /* damit die Buttons im Verhältnis "schmal" wirken */
+}
+
+.step-active {
+  display: block;
+}
+
+.step-inner {
+  background-color: var(--surface);
+  border-radius: 24px;
+  padding: calc(var(--spacing-1) * 5);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Liste mit Info-Buttons */
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-1) * 3); /* 12px */
+}
+
+/* Info-Block */
+
+.info-item {
+  display: flex;
+  align-items: stretch;
+  gap: calc(var(--spacing-1) * 2);
+}
+
+/* Button links */
+
+.info-button {
+  flex: 1 1 auto;
+  border: none;
+  padding: calc(var(--spacing-1) * 3) calc(var(--spacing-1) * 4);
+  border-radius: var(--radius-pill);
+  background-color: var(--text); /* Button Weiß */
+  color: var(--text-dark);       /* Text schwarz */
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(var(--spacing-1) * 1);
+  position: relative;
+  box-shadow: var(--shadow-subtle);
+  transition:
+    border-radius 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease,
+    background-color 0.15s ease;
+}
+
+/* leichte iOS/Material-Anmutung beim Drücken */
+.info-button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Top-Zeile (Titel) */
+
+.info-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Langer Text – eingeklappt */
+
+.info-content {
+  font-size: 0.87rem;
+  line-height: 1.4;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.25s ease,
+    opacity 0.2s ease;
+}
+
+/* Zustand: geöffnet / pressed */
+
+.info-button.expanded {
+  border-radius: var(--radius-pressed); /* 12px Rundung */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.info-button.expanded .info-content {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* Checkbox rechts */
+
+.confirm-checkbox {
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.confirm-checkbox input {
+  display: none;
+}
+
+.checkbox-visual {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: #fdfdfd;
+  position: relative;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* grüner Haken */
+
+.checkbox-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform: scale(0);
+  transform-origin: center;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  width: 10px;
+  height: 14px;
+  margin-left: 6px;
+  margin-top: 1px;
+  rotate: 40deg;
+  transition: transform 0.15s ease-out;
+}
+
+/* aktiver Zustand */
+
+.confirm-checkbox input:checked + .checkbox-visual {
+  background-color: #1bb34a; /* Grün */
+  border-color: #1bb34a;
+  box-shadow: 0 4px 12px rgba(27, 179, 74, 0.4);
+}
+
+.confirm-checkbox input:checked + .checkbox-visual::after {
+  transform: scale(1);
+}
+
+/* Nächster-Schritt-Button */
+
+.next-step-btn {
+  display: none;
+  margin-top: calc(var(--spacing-1) * 6);
+  margin-left: auto;
+  margin-right: auto;
+  padding: calc(var(--spacing-1) * 3) calc(var(--spacing-1) * 10);
+  border-radius: var(--radius-pill);
+  border: none;
+  background-color: var(--black); /* schwarz */
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.next-step-btn.visible {
+  display: block;
+}
+
+.next-step-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Feintuning */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: calc(var(--spacing-1) * 5) calc(var(--spacing-1) * 4)
+      calc(var(--spacing-1) * 3);
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .step-inner {
+    border-radius: 20px;
+    padding: calc(var(--spacing-1) * 4);
+  }
+
+  .info-item {
+    align-items: flex-start;
+  }
+
+  .checkbox-visual {
+    width: 22px;
+    height: 22px;
+  }
+
+  .next-step-btn {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
